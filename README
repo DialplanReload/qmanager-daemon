@@ -1,0 +1,14 @@
+# qmanagerd - This script reinitialize all docker containers
+#
+# Author: Anderson Freitas <tmsi.freitas@gmail.com>
+# Site: http://www.dialplanreload.com/
+# Repo: https://github.com/DialplanReload/backup-snep
+#
+# Developed by GPL license.
+#-----------------------------------------------------------------------------------------------
+#
+# Simple execution - ./qmanagerd stop | start | restart AND execution using -h
+#
+#
+# For use, your need download this script on your server and flush execute permission.
+#

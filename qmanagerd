@@ -1,0 +1,106 @@
+#!/bin/bash
+#
+# qmanagerd - This script reinitialize all docker containers
+#
+# Author: Anderson Freitas <tmsi.freitas@gmail.com>
+# Site: http://www.dialplanreload.com/
+# Repo: https://github.com/DialplanReload/backup-snep
+#
+# Developed by GPL license.
+#-----------------------------------------------------------------------------------------------
+#
+# Simple execution - ./qmanagerd stop | start | restart AND execution using -h
+#
+# Variables
+# [WARNING] This content cannot be changed without the help of professionals
+
+BASEDIR=$(dirname "$0")
+path_docker=$(which docker)
+path_echo=$(which echo)
+
+# Do
+
+  if [ "$1" = "restart" ] ;
+
+    then
+
+        $path_echo "------------------Stopping all containers"
+                $path_echo ""
+                $path_docker stop q-manager
+                $path_echo ".......... QMANAGER STOPPED"
+                $path_docker stop watchtower
+                $path_echo ".......... WATCHTOWER STOPPED"
+                $path_docker stop itc-conector
+                $path_echo ".......... ITC-CONNECTOR STOPPED"
+                $path_docker stop mongo
+                $path_echo ".......... MONGO STOPPED"
+                $path_docker stop redis
+                $path_echo ".......... REDIS STOPPED"
+                $path_echo ""
+
+        $path_echo "------------------Starting all containers"
+                $path_echo ""
+                $path_docker start redis
+                $path_echo ".......... REDIS INITIATED"
+                $path_docker start mongo
+                $path_echo ".......... MONGO INITIATED"
+                $path_docker start itc-conector
+                $path_echo ".......... ITC-CONNECTOR INITIATED"
+                $path_docker start watchtower
+                $path_echo ".......... WATCHTOWER INITIATED"
+                $path_docker start q-manager
+                $path_echo ".......... QMANAGER INITIATED"
+                $path_echo ""
+  fi
+
+  if [ "$1" = "stop" ] ;
+
+    then
+
+        $path_echo "------------------Stopping all containers"
+                $path_echo ""
+                $path_docker stop q-manager
+                $path_echo ".......... QMANAGER STOPPED"
+                $path_docker stop watchtower
+                $path_echo ".......... WATCHTOWER STOPPED"
+                $path_docker stop itc-conector
+                $path_echo ".......... ITC-CONNECTOR STOPPED"
+                $path_docker stop mongo
+                $path_echo ".......... MONGO STOPPED"
+                $path_docker stop redis
+                $path_echo ".......... REDIS STOPPED"
+                $path_echo ""
+
+  fi
+
+  if [ "$1" = "start" ] ;
+
+    then
+
+        $path_echo "------------------Starting all containers"
+                $path_echo ""
+                $path_docker start redis
+                $path_echo ".......... REDIS INITIATED"
+                $path_docker start mongo
+                $path_echo ".......... MONGO INITIATED"
+                $path_docker start itc-conector
+                $path_echo ".......... ITC-CONNECTOR INITIATED"
+                $path_docker start watchtower
+                $path_echo ".......... WATCHTOWER INITIATED"
+                $path_docker start q-manager
+                $path_echo ".......... QMANAGER INITIATED"
+                $path_echo ""
+
+  fi
+
+  if  [ "$1" == "" ] ||
+      [ "$1" == "-h" ] ;
+
+    then
+
+        $path_echo "EN_US: [DESCRIPTION] This script reinitialize all docker containers."
+        $path_echo "PT_BR: [DESCRIÇÃO] Este script reinicia todos os containers do docker."
+        $path_echo ""
+        $path_echo "/etc/init.d/qmanagerd stop | start | restart "
+
+  fi
